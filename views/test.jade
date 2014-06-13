@@ -1,0 +1,17 @@
+extends ../layouts/account
+
+block head
+  title Current Game
+
+block feet
+  link(rel='stylesheet',href='/media/game.css?#{cacheBreaker}')
+  script(src='/vendor/jquery/jquery-1.9.1.js')
+  script(src='/layouts/core.min.js')
+  script(src='/vendor/jquery/jquery-ui-1.10.3.custom.min.js')
+  script(src='/media/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js')
+  script(src='/vendor/socket.io/socket.io.js')
+  script(src='/media/test.js')
+
+block body
+
+    div#content

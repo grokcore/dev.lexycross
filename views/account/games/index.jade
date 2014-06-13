@@ -1,0 +1,40 @@
+extends ../../../layouts/account
+
+block head
+  title Account Area
+  link(rel='stylesheet', href='/views/account/index.min.css?#{cacheBreaker}')
+  link(rel='stylesheet', href='/media/game.css')
+  script(src='/vendor/jquery/jquery-1.10.2.js')
+  script(src='/layouts/core.min.js?#{cacheBreaker}')
+  script(src='/media/yourgames.js?#{cacheBreaker}')
+
+block body
+  div.row
+    div.col-sm-12
+      div.page-header
+        div.panel.panel-default
+            div.panel-heading
+                h3.panel-title Your Games
+            div.panel-body#yourGames
+                div
+                - each game in games
+                    div.btn-group
+                        - pLayers=[]
+                        - each player in game.players 
+                            - pLayers.push(player.name)
+                        - if (game.status!='DONE' && game.status!='ABANDONED') 
+                            a.btn.btn-primary(href='/game/playGame?game='+game._id)
+                                span.gameName
+                                    ='Play '+game.name
+                            div.input-group
+                                span.input-group-addon
+                                    Invite URL for Game:
+                                    =game.name+' | '
+                                    span.glyphicon.glyphicon-share
+                                input.form-control(data-id=game.id)
+
+                        - else     
+                            span.gameStatus.btn.btn-default
+                                =game.name
+                        div.btn.btn-default(data-toggle='tooltip',data-position='top',title=pLayers.join(','))='Status: '+gameCopy[game.status]
+                    div.clear &nbsp;

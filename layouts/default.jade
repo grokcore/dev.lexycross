@@ -1,0 +1,38 @@
+doctype 5
+html
+  head
+    block head
+      title #{title}
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    link(rel='stylesheet', href='/layouts/core.min.css?#{cacheBreaker}')
+    link(rel='stylesheet', href='/media/general.css?#{cacheBreaker}')
+    link(href='http://fonts.googleapis.com/css?family=Oswald:400,700',rel='stylesheet',type='text/css')
+    script(src='/vendor/jquery/jquery-1.9.1.js')
+    script(src='/layouts/core.min.js')
+    block neck
+  body
+    div.container
+      div.panel-menu.panel-menu-first
+          a(href='/') LexyCross
+      div.panel-menu.panel-menu-second
+          a(href='/account/') Games
+    div.page
+      div.col-xs-8.center-block
+        block body
+    
+    div.clearfix
+    div.footer
+      div.container
+        div.inner.pull-right
+          span.copyright
+            &#169; #{copyrightYear} #{copyrightName}
+          ul.links
+            li: a(href='/') Home
+            li: a(href='/logout/') Sign Out
+            li: a(href='/cudos/') Wordsmith AI
+          div.clearfix
+    
+    div.ajax-spinner
+      img(src='/media/ajax-pulse.gif')
+    
+    block feet

@@ -1,0 +1,23 @@
+extends ../../layouts/default
+
+block head
+  title About Us
+
+block neck
+  link(rel='stylesheet', href='/views/about/index.min.css?#{cacheBreaker}')
+
+block body
+  div.row
+    div.col-sm-12.special
+      div.page-header
+        h1 LexyCross
+      p.lead Would you like to play a game?
+      p 
+        i.icon-play-circle.btn-lg
+  .col-xs-3
+    a(href='/login/')
+      img(src="/media/screencap.jpg")
+  .col-xs-8
+    p.text-left LexyCross is a personal project I'm opening up for people to play.   At the moment, you're going to have to agree when the game is over.  I'll be adding options to the games for most customized games, and additional players.  If you have any feedback please use the contact form, and I'll gladly see if I can help.   Thank you, and enjoy playing LexyCross.
+    p.text-left -Colin Fredericks 
+

@@ -1,0 +1,337 @@
+extends ../../../layouts/account
+
+block head
+  title Current Game
+
+block feet
+  link(rel='stylesheet',href='/media/game.css?#{cacheBreaker}')
+  script(src='/vendor/jquery/jquery-1.9.1.js')
+  script(src='/layouts/core.min.js')
+  script(src='/vendor/jquery/jquery-ui-1.10.3.custom.min.js')
+  script(src='/media/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js')
+  script(src='/vendor/socket.io/socket.io.js')
+  script(src='/game/getGameData?game=#{gameId}')
+  script(src='/media/game.js?#{cacheBreaker}')
+
+block body
+  div.modal.fade#dialog
+    div.modal-dialog     
+      div.modal-content  
+        br
+        p.lead.text-info.text-center#msgCopy
+        div.buttons
+
+  div.row
+    div.col-xs-11
+        div
+           div#inviteUrlTip.alert.alert-info.alert-dismissable.absolute(data-dismiss="alert")
+           div.input-group
+               span.input-group-addon(title='Copy paste this to your friend',data-toggle='tooltip',data-placement='top')
+                   Invite URL for Game: 
+                   =game.name+' | '
+                   span.glyphicon.glyphicon-share
+               input.form-control#inviteUrl.col-sm-8
+           br
+
+        div#rack.panel.col-md-8
+           .pull-right#currentTurn
+           - for (i in player.rack) 
+               div.letter-box
+                  div.letter 
+                    =player.rack[i]
+
+           div#actions.actions
+            div.buttons
+              button.pull-right.btn.btn-sm.btn-danger#leaveGame Leave Game
+              button.btn.btn-sm.btn-default#playWord
+                  span.hidden-xs.pull-left Move | 
+                  span.glyphicon.glyphicon-ok
+              button.btn.btn-sm.btn-default#swapTiles
+                  span.hidden-xs.pull-left Swap | 
+                  span.glyphicon.glyphicon-transfer
+              button.btn.btn-sm.btn-default#recallWord
+                  span.hidden-xs.pull-left Recall | 
+                  span.glyphicon.glyphicon-collapse-up
+              button.btn.btn-sm.btn-default#passMove
+                  span.hidden-xs.pull-left Pass | 
+                  span.glyphicon.glyphicon-hand-right
+              - if (isCreator && status!='INPROGRESS') 
+                  button.btn.btn-sm.btn-default#startGame Start Game | 
+                      span.glyphicon.glyphicon-play
+            div.clear
+
+         div#chat.panel
+           div#chatMessages
+           div
+             form(id='chat') 
+               input.col-sm-11(id='msg',placeholder='chat here')
+               input.btn.btn-sm.btn-default(value='submit',type='button')
+
+
+          div.panel#boardContainer
+            div#scoreboard
+            div#board
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.clearfix
+
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.clearfix
+
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.clearfix
+
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.clearfix
+
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.clearfix
+
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.clearfix
+
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.clearfix
+
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.clearfix
+
+
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.clearfix
+
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.clearfix
+
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.clearfix
+
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.clearfix
+
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.clearfix
+
+
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.clearfix
+
+
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.letter-box.pull-left
+              div.clearfix
+           div.clearfix
+
+       div.col-xs-11
+        div.panel
+          strong moves  
+          div#moves
+

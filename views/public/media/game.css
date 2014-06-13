@@ -1,0 +1,118 @@
+/* CSS for the game baord etc */
+::-webkit-scrollbar-thumb {
+    border-radius: 0px;
+    background-color: rgba(0,0,0,.5);
+    -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
+}
+::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 8px;
+}
+
+#gameList {
+    outline: 1px solid #ccc;
+    height: 10em;
+    overflow: auto;
+}
+
+#gameList a {
+    font-size: 0.8em;
+}
+
+#score {
+    height: 10em;
+    overflow-y: scroll;
+    border-right: 1px dashed #333;
+}
+
+#board {
+    z-index:0;
+    font-size: 1.5em;
+    background:#eee;
+    min-height:300px;
+}
+.absolute { position: absolute; }
+#players {
+}
+
+#rack .letter { margin: 0; padding:0;  }
+
+.letter {
+    z-index:1;
+    font-size: 1em;
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    background: #eee;
+    text-align: center;
+    border-radius: 0.4em;
+}
+
+.letter-box {
+    margin:0;padding:0;
+    display: inline-block;
+    text-align: center;
+    height: 32px;
+    width: 32px;
+    background: #fff;
+    border-radius: 0.2em;
+    border: 1px solid #ccc;
+}
+
+#rack {
+    font-size: 1.5em;
+    border-radius: 0.3em;
+    background:#fff;
+}
+
+#rack .letter {
+    cursor: pointer;
+}
+
+#board {
+    width: 26em;
+}
+
+.b-3w { border: 2px solid red; }
+.b-2w { border: 2px solid blue; }
+.b-3l { border: 1px solid red; }
+.b-2l { border: 1px solid blue; }
+
+
+.letter .score {
+    font-size: 0.5em;
+}
+
+
+#chatMessages {
+	overflow: auto;
+    border: 1px solid #ccc;
+	height: 10em;
+    padding: 0.4em;
+}
+.chatName {
+	float: left;
+	font-weight: bold;
+	font-size: 0.8em;
+}
+.chatMessage {
+	font-size: 0.7em;
+	clear:both;
+}
+
+.error {
+	font-weight: bold;
+}
+
+.actions {
+    margin-right: 1em;
+    margin-bottom: 1em;
+}
+
+.buttons .btn { 
+    min-width: 9em;
+}
+
+.lc-tooltip {
+    padding-left: 0.5em;
+}

@@ -1,0 +1,187 @@
+/* CSS for the game baord etc */
+::-webkit-scrollbar-thumb {
+    border-radius: 0px;
+    background-color: rgba(0,0,0,.5);
+    -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
+}
+::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 8px;
+}
+
+.page {
+  -moz-user-select: -moz-none;
+   -khtml-user-select: none;
+   -webkit-user-select: none;
+
+   /*
+     Introduced in IE 10.
+     See http://ie.microsoft.com/testdrive/HTML5/msUserSelect/
+   */
+   -ms-user-select: none;
+   user-select: none;
+}
+
+#inviteUrlTip {
+    z-index:100;
+}
+#scoreboard {
+
+}
+
+#gameList {
+    outline: 1px solid #ccc;
+    height: 10em;
+    overflow: auto;
+}
+
+#gameList a {
+    font-size: 0.8em;
+}
+
+#moves {
+    height: 10em;
+    overflow-y: scroll;
+    border-right: 1px dashed #333;
+}
+
+#board {
+    opacity: 0.8;
+    z-index:0;
+    font-size: 1.5em;
+    background:#eee;
+    min-height:300px;
+}
+.absolute { position: absolute; }
+#players {
+}
+
+
+#rack .letter { margin: 0; padding:0;  }
+
+.letter, .letter-box {
+    height: 1.2em;
+    width: 1.2em;
+}
+.letter {
+    z-index:1;
+    font-size: 1em;
+    display: inline-block;
+    background: #eee;
+    text-align: center;
+    border-radius: 0.4em;
+}
+
+.letter-box {
+    margin:0;padding:0;
+    display: inline-block;
+    text-align: center;
+    background: #fff;
+    border-radius: 0.2em;
+    border: 1px solid #ccc;
+}
+
+#boardContainer {
+    min-width: 440px;
+}
+#rack {
+    box-shadow: 3px 3px 5px #888888;
+    position: fixed;
+    margin-left: 0.5em;
+    bottom: 1em;
+    z-index: 100;
+    font-size: 1.5em;
+    border-radius: 0.3em;
+    background:#fff;
+}
+
+#rack .letter {
+    cursor: pointer;
+}
+
+#board {
+    box-shadow: 3px 3px 5px #888888;
+    width: 420px;
+    background:#eee;
+    padding:1em;
+    margin:1em;
+    margin-right: 5px;
+    min-width: 365px;
+}
+
+.b-3w { border: 2px solid red; }
+.b-2w { border: 2px solid blue; }
+.b-3l { border: 1px solid red; }
+.b-2l { border: 1px solid blue; }
+
+
+.letter .score {
+    font-size: 0.5em;
+}
+
+
+#chatMessages {
+	overflow: auto;
+    border: 1px solid #ccc;
+	height: 10em;
+    padding: 0.4em;
+}
+.chatName {
+	float: left;
+	font-weight: bold;
+	font-size: 0.8em;
+}
+.chatMessage {
+	font-size: 0.7em;
+	clear:both;
+}
+
+.error {
+	font-weight: bold;
+}
+
+.actions {
+    margin-right: 1em;
+    margin-bottom: 1em;
+}
+
+.buttons .btn { 
+    min-width: 9em;
+}
+
+.lc-tooltip {
+    padding-left: 0.5em;
+}
+/* media queries */
+
+/* Large desktop */
+@media (min-width: 1200px) { 
+
+}
+
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 980px) and (max-width: 1200px) { 
+
+}
+
+
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) { 
+
+}
+
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) { 
+    .letter-box, .letter {
+        width: 24px;
+        height: 24px;
+    }
+}
+
+/* Landscape phones and down */
+@media (max-width: 480px) {
+
+}
+
+
+

@@ -1,0 +1,29 @@
+extends ../layouts/default
+
+block head
+  title lexyCross - would you like to play a game?
+
+block neck
+  link(rel='stylesheet', href='/views/index.min.css?#{cacheBreaker}')
+  script(type='text/javascript', src='media/index.js?#{cacheBreaker}')
+
+
+block body
+  div.well
+    h1 
+     img(src="/media/lexiCrossLogo-mid.png") 
+     span  lexyCross 
+    p.lead
+      i Would you like to play a game?
+      div
+        a(href='/login/')
+          div.icon-play
+          img(src="/media/screencap.jpg") 
+      br
+      div.col-sm-12
+        a.btn.btn-primary.btn-lg(href='/login/') Login 
+        span  | 
+        a.btn.btn-primary.btn-lg(href='/signup/') Sign Up
+      div.clearfix
+        a.btn.btn-warning.btn-small(href='/login/forgot/') Reset Your Password
+

@@ -1,0 +1,120 @@
+
+/* I like this font for things */
+.clear-fix { clear:both; }
+.nowrap { white-space: no-wrap; }
+
+h1,h2,h3,a {
+    font-family: 'Oswald', 'sans-serif' !important;
+}
+
+body {
+    background: #16750d;
+    padding: 0;/*bootstrap really? */
+}
+
+
+.right-logo-space {
+    position: fixed;
+    right: -4em;
+    top: 8em;
+    transform:rotate(90deg);
+    -webkit-transform:rotate(90deg);
+}
+.right-logo-space img {
+    position: relative;
+    right: 1em;
+    width: 4em;
+}
+/* our menu classes */
+
+.panel-menu {
+    position: fixed;
+    text-align: center;
+    background: #eee;
+    width: 5em;
+    height: 100%;
+    border-left: 1px solid #666;
+}
+.panel-menu:hover {
+    border-left: 1px solid #999;
+}
+
+.panel-menu-second {
+    left: 5em;
+}
+.panel-menu-first {
+    left: 0em;
+}
+
+.panel-menu a:active {
+    color: red;
+}
+
+.panel-menu a {
+    position: relative;
+    text-shadow: 1px 1px black;
+    top: 0.1em;/*check box transform on this */
+    font-family: 'Oswald', 'sans-serif';
+    text-decoration: none;
+    text-transform: uppercase;
+    transform:rotate(90deg);
+    -webkit-transform:rotate(90deg);
+    display: block;
+}
+
+.center-block {
+    margin: auto;
+    float: none;
+}
+
+.page {
+    margin-left: 5em;
+}
+
+/* media queries */
+
+/* Large desktop */
+@media (min-width: 1200px) { 
+    .panel-menu { width: 5em; }
+    .panel-menu a { font-size: 4.2em; }
+    .panel-menu-second { left: 5em; }
+    .panel-menu-first { left: 0em; }
+
+
+}
+
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 980px) and (max-width: 1200px) { 
+    .panel-menu { width: 4.5em; }
+    .panel-menu a { font-size: 4.0em; }
+    .panel-menu-second { left: 4.5em; }
+    .panel-menu-first { left: 0em; }
+}
+
+
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) { 
+    .panel-menu { width: 4.2em; }
+    .panel-menu a { font-size: 3.8em; }
+    .panel-menu-second { left: 4.2em; }
+    .panel-menu-first { left: 0em; }
+}
+
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) { 
+    .panel-menu { width: 4.0em; }
+    .panel-menu a { font-size: 3.6em; }
+    .panel-menu-second { left: 4em; }
+    .panel-menu-first { left: 0em; }
+}
+
+/* Landscape phones and down */
+@media (max-width: 480px) {
+    .panel-menu { width: 3em; }
+    .panel-menu a { font-size: 2.4em; }
+    .panel-menu-second { left: 3em; }
+    .panel-menu-first { left: 0em; }
+}
+
+
+

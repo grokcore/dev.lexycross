@@ -1,0 +1,82 @@
+extends ../../layouts/account
+
+block head
+  title Account Area
+  link(rel='stylesheet', href='/views/account/index.min.css?#{cacheBreaker}')
+  link(rel='stylesheet', href='/media/game.css')
+  script(src='/vendor/jquery/jquery-1.10.2.js')
+  script(src='/layouts/core.min.js')
+  script(src='/media/account.js')
+
+block body
+  div
+
+    div.col-md-4
+      div.panel.panel-default
+          div.panel-heading
+              h3.panel-title Latest Public Games
+          div.panel-body
+              input.form-control(id='search',placeholder='Search teh games')
+              p (you won't see in progress games here)
+              div &nbsp;
+              div.well#gameList
+      div.panel.panel-default
+          div.panel-heading
+              h3.panel-title Your Games
+          div.panel-body
+              input.form-control(id='searchYours',placeholder='Search yur games')
+              div &nbsp;
+              div.well#yourGameList
+
+
+    div.col-md-8
+        div.panel.panel-default
+          div.panel-heading
+              h3.panel-title Start A New Game
+          div.panel-body
+              form(id="newGameForm",role="form",method="post",action="/game/newGame")
+                div.col-md-6.form-group
+                  div.well
+                      label(for="gamename") Name of the game:&nbsp;
+                      input.form-control(type="text",id="gamename",name="gamename",data-required="string",data-placement="top",data-content="Name this game (and don't use funky characters)",value=randomName) 
+                  div.well
+                      label(for="total") Total Players:
+                      input.form-control(type="text",id="total",name="totalplayers",value="2",data-required="number",data-placement="top",data-content="Enter the number of players, 1 to 4.",data-type="number",data-min="1",data-max="4")
+                  div.well.text-center
+                      label(for="useai") Add a Computer Player:
+                      input(type="checkbox",id="useai",name="useai")
+                  div.well.text-center
+                      button.btn-primary.btn Go Play !
+                div.col-md-6
+                  div.well(data-toggle='buttons')
+                      div
+                          strong List it?
+                          span.glyphicon.glyphicon-info-sign.lc-tooltip(data-toggle="tooltip",data-placement="top",title="Public games that haven't been started yet will show up in the search.")
+                      label.btn.btn-primary.active(for="public") public
+                          input.form-control(type="radio",checked="checked",id="public",name="isprivate",value="")
+                      |||
+                      label.btn.btn-primary(for="private") private
+                          input.form-control(type="radio",id="private",name="isprivate",value="private")
+                  
+                  div.well(data-toggle='buttons')
+                      div 
+                          strong Dictionary to validate moves with:
+                          span.glyphicon.glyphicon-info-sign.lc-tooltip(data-toggle="tooltip",data-placement="top",title="SOWPODS is a combo of the official players dictionary and the Official Word List, TWL is the Tournament Word List")
+                      label.btn.btn-sm.btn-primary.active(for="public") SOWPODS
+                          input.form-control(type="radio",checked="checked",id="public",name="dictionary",value="twl06")
+                      |||
+                      label.btn.btn-sm.btn-primary(for="private") TWL06
+                          input.form-control(type="radio",checked="checked",id="public",name="dictionary",value="sowpods")
+                  div.well
+                      label(for="password") Game Password (optional):
+                      input.form-control(type="text",id="password",name="password",value="")
+                  div.clear
+                  div.well.text-center.hidden-md.hidden-lg
+                      button.btn-primary.btn Go Play !
+
+div.col-sm-6.special
+  div.page-header
+    h1 Leaderboard
+  i.icon-remove-circle.super-awesome
+  span (coming soon)
+
